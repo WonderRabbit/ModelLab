@@ -1,0 +1,34 @@
+# Codex workspace config for model-aware prompt optimization
+workspace_name = "ModelLab"
+default_profile = "researcher"
+
+[paths]
+knowledge = "knowledge"
+playbooks = "playbooks"
+prompts = "prompts"
+output = "output"
+decisions = "knowledge/decisions"
+
+[execution]
+require_agents_md = true
+default_evidence_label = "hypothesis"
+prefer_reusable_assets = true
+
+[quality]
+must_update_reusable_kb = true
+must_record_uncertainty = true
+must_recommend_next_step = true
+
+[roles.researcher]
+description = "Analyze model behavior and capture evidence-backed prompting implications."
+primary_docs = [
+  "knowledge/prompting/evaluation-rubric.md",
+  "playbooks/evaluate-model.md"
+]
+
+[roles.builder]
+description = "Design prompt schema, reusable components, and model-specific patches."
+primary_docs = [
+  "knowledge/prompting/schema.md",
+  "playbooks/build-system-prompt.md"
+]
