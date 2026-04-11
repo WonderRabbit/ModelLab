@@ -1,39 +1,40 @@
 # AGENTS.md
 
-## Repository purpose
-This repository is a Codex-operated workspace for model-aware prompt optimization: research model behavior, design reusable prompt strategies, and accumulate durable knowledge.
+## 저장소 목적
+이 저장소는 모델 인지 프롬프트 최적화를 위한 Codex 운영 작업공간이다. 모델 동작을 연구하고, 재사용 가능한 프롬프트 전략을 설계하며, 지속 가능한 지식을 축적한다.
 
-## Operating rules
-1. Read this file first, then follow `PLANS.md` and relevant playbooks.
-2. Prefer extending existing docs over creating duplicates.
-3. Separate **rules**, **knowledge**, **outputs**, and **decisions**.
-4. Mark uncertain claims with evidence level (`evidence`, `inference`, `hypothesis`).
-5. Do not present high-confidence model claims without traceable evidence.
+## 운영 규칙
+1. 이 파일을 먼저 읽고, 이후 `PLANS.md`와 관련 플레이북을 따른다.
+2. 중복 파일 생성보다 기존 문서 확장을 우선한다.
+3. **규칙**, **지식**, **출력**, **의사결정**을 분리한다.
+4. 불확실한 주장은 근거 수준(`evidence`, `inference`, `hypothesis`)으로 표시한다.
+5. 추적 가능한 근거 없이 모델에 대한 고신뢰 주장을 하지 않는다.
+6. 저장소 내 모든 신규 파일과 수정 내용은 원칙적으로 한글로 작성한다.
 
-## Directory guidance
-- `.codex/`: Codex runtime config, profiles, reusable prompt templates.
-- `knowledge/`: reusable KB (models, prompting methods, domains, decisions).
-- `playbooks/`: repeatable operational workflows.
-- `prompts/`: production-ready prompt assets and variants.
-- `output/`: experiment logs, evaluations, generated artifacts.
-- `skills/`: optional task-specific automation skills.
+## 디렉터리 안내
+- `.codex/`: Codex 실행 설정, 프로필, 재사용 프롬프트 템플릿.
+- `knowledge/`: 재사용 지식베이스(모델, 프롬프팅 방법, 도메인, 의사결정).
+- `playbooks/`: 반복 가능한 운영 워크플로.
+- `prompts/`: 운영 가능한 프롬프트 자산 및 변형.
+- `output/`: 실험 로그, 평가, 생성 산출물.
+- `skills/`: 선택적 작업 자동화 스킬.
 
-## Uncertainty handling rules
-- Always separate observed behavior from interpretation.
-- Record test scope and known limitations.
-- Label findings as provisional until replicated.
+## 불확실성 처리 규칙
+- 관찰된 동작과 해석을 항상 분리한다.
+- 테스트 범위와 알려진 한계를 기록한다.
+- 재현 전까지 결과를 잠정으로 표기한다.
 
-## Done criteria
-A task is done when:
-- artifacts are saved in the correct directory,
-- reusable knowledge is updated (not only ad-hoc notes),
-- decisions/assumptions are documented,
-- next-step recommendation is provided.
+## 완료 기준
+다음 조건을 모두 만족하면 작업이 완료다.
+- 산출물이 올바른 디렉터리에 저장됨
+- 재사용 지식이 업데이트됨(임시 메모만 추가하지 않음)
+- 의사결정/가정이 문서화됨
+- 다음 단계 권고가 제공됨
 
-## References
-- Operating plan: `PLANS.md`
-- Prompt schema: `knowledge/prompting/schema.md`
-- Evaluation rubric: `knowledge/prompting/evaluation-rubric.md`
-- Anti-patterns: `knowledge/prompting/anti-patterns.md`
-- Build flow: `playbooks/build-system-prompt.md`
-- Evaluation flow: `playbooks/evaluate-model.md`
+## 참고 문서
+- 운영 계획: `PLANS.md`
+- 프롬프트 스키마: `knowledge/prompting/schema.md`
+- 평가 루브릭: `knowledge/prompting/evaluation-rubric.md`
+- 안티패턴: `knowledge/prompting/anti-patterns.md`
+- 빌드 흐름: `playbooks/build-system-prompt.md`
+- 평가 흐름: `playbooks/evaluate-model.md`

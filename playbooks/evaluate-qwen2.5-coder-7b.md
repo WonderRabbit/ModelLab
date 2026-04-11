@@ -1,70 +1,70 @@
-# Playbook: Evaluate qwen2.5-coder-7b Prompt Variants
+# 플레이북: qwen2.5-coder-7b 프롬프트 변형 평가
 
-## Goal
-Run repeatable, evidence-producing evaluations for system prompt variants targeting local Qwen2.5-Coder-7B usage.
+## 목표
+로컬 Qwen2.5-Coder-7B 사용을 대상으로 시스템 프롬프트 변형을 반복 가능하고 근거 중심으로 평가한다.
 
-## Scope (first pass)
-- Model target: `qwen2.5-coder-7b` (provisional target)
-- Prompt baseline: `prompts/system/qwen2.5-coder-7b-base.md`
-- Compare at least 3 variants:
-  - V0: baseline
-  - V1: stricter format constraints
-  - V2: shorter constraints + stronger user-side reinforcement
+## 범위 (1차)
+- 모델 대상: `qwen2.5-coder-7b` (잠정 대상)
+- 기준 프롬프트: `prompts/system/qwen2.5-coder-7b-base.md`
+- 최소 3개 변형 비교:
+  - V0: 기준선
+  - V1: 더 엄격한 형식 제약
+  - V2: 더 짧은 제약 + 사용자 측 강화
 
-## What to test
-1. Coding transformation task (edit/refactor with constraints).
-2. Architecture tradeoff analysis task.
-3. Summarization with evidence/inference/hypothesis labeling.
-4. Structured output task (strict JSON or fixed markdown headers).
+## 테스트 항목
+1. 코딩 변환 작업(제약 포함 편집/리팩터링).
+2. 아키텍처 트레이드오프 분석 작업.
+3. evidence/inference/hypothesis 라벨링 요약 작업.
+4. 구조화 출력 작업(엄격 JSON 또는 고정 마크다운 헤더).
 
-## Experimental controls
-- Same task set across all variants.
-- Same context payload per task.
-- Minimum 3 repeated runs per task/variant.
-- Fixed decoding parameters when possible.
-- Record runtime setup (quantization, context window, sampler settings).
+## 실험 통제
+- 모든 변형에서 동일 작업 세트 사용.
+- 작업별 동일 컨텍스트 페이로드 사용.
+- 작업/변형당 최소 3회 반복 실행.
+- 가능하면 디코딩 파라미터 고정.
+- 런타임 설정(양자화, 컨텍스트 윈도우, 샘플러)을 기록.
 
-## Scoring rubric
-Use `knowledge/prompting/evaluation-rubric.md`.
-Score each run for:
-- instruction following
-- format adherence
-- reasoning quality
-- verbosity control
-- task fitness
-- cross-run consistency
-- hallucination risk
-- context handling quality
+## 채점 루브릭
+`knowledge/prompting/evaluation-rubric.md` 사용.
+각 실행을 다음으로 채점:
+- 지시 준수
+- 형식 준수
+- 추론 품질
+- 장문 제어
+- 작업 적합성
+- 실행 간 일관성
+- 환각 위험
+- 컨텍스트 처리 품질
 
-## Artifacts to save
-Save under:
+## 저장 산출물
+다음 경로에 저장:
 - `output/eval-results/qwen2.5-coder-7b/<YYYY-MM-DD>/run-<id>.md`
-- `output/eval-results/qwen2.5-coder-7b/<YYYY-MM-DD>/raw/` (raw model outputs)
+- `output/eval-results/qwen2.5-coder-7b/<YYYY-MM-DD>/raw/` (원시 모델 출력)
 
-Each run report must include:
-- prompt variant ID
-- exact task prompt
-- model runtime config
-- rubric table with evidence excerpts
-- pass/fail notes for output contract
+각 실행 보고서 필수 포함:
+- 프롬프트 변형 ID
+- 정확한 작업 프롬프트
+- 모델 런타임 설정
+- 근거 발췌가 포함된 루브릭 표
+- 출력 계약 통과/실패 메모
 
-## How to compare variants
-1. Compute per-criterion average for each variant.
-2. Compute stability note from repeated runs (stable/provisional/inconclusive).
-3. Check failure mode frequency:
-   - format drift
-   - missed constraints
-   - unsupported claims
-4. Prefer variants that improve format adherence and instruction following **without** degrading task fitness.
+## 변형 비교 방법
+1. 변형별 기준 평균을 계산한다.
+2. 반복 실행에서 안정성 메모를 산출한다(안정/잠정/결론 불가).
+3. 실패 모드 빈도를 점검한다.
+   - 형식 드리프트
+   - 제약 누락
+   - 근거 없는 주장
+4. 작업 적합성을 해치지 않으면서 형식 준수와 지시 준수를 개선하는 변형을 우선한다.
 
-## Improvement decision rule (first-pass)
-A variant is “better” if:
-- +0.4 or greater average gain in format adherence **and** instruction following,
-- no >0.3 drop in task fitness,
-- same or lower hallucination risk score,
-- stable in at least 2 of 3 repeated runs.
+## 개선 의사결정 규칙 (1차)
+다음을 모두 만족하면 “더 나은 변형”으로 간주한다.
+- 형식 준수 **그리고** 지시 준수 평균이 +0.4 이상 향상,
+- 작업 적합성 하락이 0.3 초과하지 않음,
+- 환각 위험 점수가 동일하거나 개선됨,
+- 반복 3회 중 최소 2회에서 안정 판정.
 
-## Post-run updates required
-- Update `knowledge/models/qwen2.5-coder-7b/profile.md` evidence section.
-- Update `knowledge/models/qwen2.5-coder-7b/prompting.md` with confirmed patterns.
-- If strategy shifts materially, add a decision record in `knowledge/decisions/`.
+## 실행 후 필수 갱신
+- `knowledge/models/qwen2.5-coder-7b/profile.md`의 근거 섹션 업데이트.
+- `knowledge/models/qwen2.5-coder-7b/prompting.md`에 검증된 패턴 반영.
+- 전략이 실질적으로 바뀌면 `knowledge/decisions/`에 결정 기록 추가.

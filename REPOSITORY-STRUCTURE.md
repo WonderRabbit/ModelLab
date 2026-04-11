@@ -1,4 +1,4 @@
-# Repository Structure Proposal
+# 저장소 구조 제안
 
 ```text
 .codex/
@@ -40,8 +40,8 @@ output/
   reports/
 ```
 
-## Why this is maintainable
-- Clear separation by artifact type reduces drift and duplication.
-- Playbooks enforce repeatable workflows.
-- Schema + rubric provide shared quality language.
-- Model profiles standardize research-to-prompt translation.
+## 유지보수 가능한 이유
+- 산출물 유형별 명확한 분리는 드리프트와 중복을 줄인다.
+- 플레이북은 반복 가능한 워크플로를 강제한다.
+- 스키마 + 루브릭은 공통 품질 언어를 제공한다.
+- 모델 프로필은 연구 결과를 프롬프트로 표준 전환한다.

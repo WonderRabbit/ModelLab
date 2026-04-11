@@ -1,95 +1,95 @@
-# Qwen2.5-Coder-7B Profile (First Pass)
+# Qwen2.5-Coder-7B 프로필 (1차)
 
-## 1) Metadata
-- Model name: Qwen2.5-Coder-7B-Instruct
-- Provider: Qwen (Alibaba Cloud)
-- Version/date: Qwen2.5-Coder release line (2024)
-- Parameter/class: ~7B class instruct-tuned coding model (HF page reports 8B params display)
-- Last updated: 2026-04-11
-- Owner: Codex session
-- Target status: **provisional target** (not yet confirmed as deployed local model)
+## 1) 메타데이터
+- 모델 이름: Qwen2.5-Coder-7B-Instruct
+- 제공자: Qwen (Alibaba Cloud)
+- 버전/날짜: Qwen2.5-Coder 릴리스 라인 (2024)
+- 파라미터/클래스: 약 7B급 지시튜닝 코딩 모델(HF 페이지에는 8B 표기)
+- 마지막 업데이트: 2026-04-11
+- 담당: Codex 세션
+- 대상 상태: **잠정 대상** (로컬 배포 모델 여부 미확정)
 
-## 2) Local-use assumptions (this run)
-- Runtime assumption: local inference through llama.cpp/vLLM/Ollama-compatible stack. (`hypothesis`)
-- Primary usage assumption: coding + technical analysis, with some general assistant use. (`inference`)
-- Prompt sensitivity assumption: medium-high sensitivity to explicit format contracts for deterministic output. (`inference`)
-- Resource assumption: fits on commodity single-GPU or quantized CPU/GPU mixed setups used for local experimentation. (`inference`)
+## 2) 로컬 사용 가정 (이번 실행)
+- 런타임 가정: llama.cpp/vLLM/Ollama 호환 스택을 통한 로컬 추론. (`hypothesis`)
+- 주 사용 가정: 코딩 + 기술 분석 중심, 일부 일반 어시스턴트 사용. (`inference`)
+- 프롬프트 민감도 가정: 결정적 출력을 위해 명시적 형식 계약에 중~고 민감. (`inference`)
+- 자원 가정: 로컬 실험에서 쓰는 단일 GPU 또는 양자화 CPU/GPU 혼합 환경에 적합. (`inference`)
 
-## 3) Summary
-Qwen2.5-Coder-7B-Instruct is selected as the **initial local Qwen target** because it is coding-oriented, widely distributed for local deployment, and likely to be a pragmatic first optimization target for system-prompt work. At this stage, repository-local behavioral evidence is not yet available, so practical guidance below is intentionally labeled as inference/hypothesis and should be validated via controlled evaluations. (`evidence`: target selection process in this repo; `inference`: behavioral expectations)
+## 3) 요약
+Qwen2.5-Coder-7B-Instruct는 코딩 지향이며 로컬 배포 생태계가 넓어 **초기 로컬 Qwen 대상**으로 선정되었다. 현재 저장소 내부의 동작 근거는 아직 없으므로, 아래 실무 가이드는 의도적으로 추론/가설로 표기했고 통제된 평가로 검증해야 한다. (`evidence`: 저장소 내 대상 선정 과정, `inference`: 동작 기대)
 
-## 4) Strengths
-- Likely strong baseline on code generation, code transformation, and code explanation compared with non-coder 7B peers. (`inference`)
-- Good candidate for structured task execution when output schema is explicit. (`inference`)
-- Broad local ecosystem support (quantizations/serving options) makes repeatable experiments practical. (`evidence`: public model distribution; `inference`: experimentation practicality)
+## 4) 강점
+- 비코더 7B 동급 대비 코드 생성/변환/설명에서 강한 기본 성능이 예상된다. (`inference`)
+- 출력 스키마가 명시되면 구조화 작업 수행 후보로 적합하다. (`inference`)
+- 로컬 서빙/양자화 선택지가 넓어 반복 실험에 유리하다. (`evidence`: 공개 배포, `inference`: 실험 실용성)
 
-### Prompt consequences
-- **Essential ingredients:** explicit task goal, language/runtime target, acceptance checks, output schema.
-- **Optional ingredients:** long persona framing, heavy stylistic constraints.
-- **Avoid:** vague “improve this” prompts without objective criteria.
+### 프롬프트 결과
+- **필수 요소:** 명시적 작업 목표, 언어/런타임 대상, 수용 기준, 출력 스키마.
+- **선택 요소:** 긴 페르소나 프레이밍, 과도한 문체 제약.
+- **회피:** 객관적 기준 없는 모호한 “개선해줘” 요청.
 
-## 5) Weaknesses
-- Potential drift on long multi-constraint prompts if constraints are buried. (`hypothesis`)
-- Increased hallucination risk in factual/non-code domains without provided context. (`inference`)
-- Possible over-verbosity when not given length/structure controls. (`hypothesis`)
+## 5) 약점
+- 제약이 묻히면 긴 다중 제약 프롬프트에서 이탈 가능성. (`hypothesis`)
+- 컨텍스트 없이 사실/비코드 영역에서 환각 위험 증가. (`inference`)
+- 길이/구조 제어가 없으면 과장문 가능성. (`hypothesis`)
 
-### Prompt consequences
-- Put non-negotiables near top, in bullets.
-- Force uncertainty handling (“state assumptions / unknowns”).
-- Cap response length or section count for routine tasks.
+### 프롬프트 결과
+- 비타협 제약을 상단 글머리표에 배치.
+- 불확실성 처리 강제(“가정/미확인 명시”).
+- 일반 작업에는 응답 길이 또는 섹션 수 상한 부여.
 
-## 6) Instruction-following tendency
-- Working assumption: **moderate-to-strong** when constraints are concise, ordered, and measurable. (`hypothesis`)
-- Degrades when directives conflict or mix hard rules with preferences. (`inference`)
+## 6) 지시 준수 성향
+- 작업 가정: 제약이 간결·순서화·측정 가능하면 **보통~강함**. (`hypothesis`)
+- 하드 규칙과 선호가 충돌하면 성능 저하. (`inference`)
 
-### System vs user split
-- **System prompt:** stable global rules, tone, refusal/uncertainty behavior, default output contract.
-- **User prompt:** task-specific schema details, language/toolchain constraints, edge-case emphasis.
+### 시스템/사용자 분리
+- **시스템 프롬프트:** 안정적 전역 규칙, 톤, 거절/불확실성 동작, 기본 출력 계약.
+- **사용자 프롬프트:** 작업별 스키마 상세, 언어/도구 체인 제약, 엣지 케이스 강조.
 
-## 7) Format adherence tendency
-- Working assumption: better adherence with repeated schema reminders and exact headers/keys. (`hypothesis`)
-- Risk: markdown/header drift in longer answers unless explicitly constrained. (`hypothesis`)
+## 7) 형식 준수 성향
+- 작업 가정: 스키마 재강조와 정확한 헤더/키 지정 시 준수 향상. (`hypothesis`)
+- 위험: 명시 제약이 없으면 장문 답변에서 마크다운/헤더 드리프트. (`hypothesis`)
 
-### Essential vs optional
-- **Essential:** explicit schema, “return only X sections”, fallback behavior on missing info.
-- **Optional:** few-shot examples (use when failures persist).
+### 필수/선택
+- **필수:** 명시 스키마, “X 섹션만 반환”, 정보 누락 시 폴백 동작.
+- **선택:** 퓨샷 예시(실패가 반복될 때만 사용).
 
-## 8) Verbosity tendency
-- Likely defaults to medium-long explanatory style for coding questions. (`hypothesis`)
-- Better control expected via direct budgets: “max N bullets”, “<= M lines per section”. (`inference`)
+## 8) 장문 성향
+- 코딩 질문에서 중~장문 설명 스타일이 기본일 가능성. (`hypothesis`)
+- “최대 N개 글머리표”, “섹션당 <= M줄” 같은 직접 예산으로 제어 기대. (`inference`)
 
-## 9) Reasoning behavior
-- Likely useful decomposition for practical coding tasks; may still produce confident but brittle plans without verification instructions. (`inference`)
-- Improves with checklist-style visible reasoning outputs (assumptions, plan, result, validation). (`inference`)
+## 9) 추론 동작
+- 실용 코딩 작업에서 유용한 분해가 가능하나, 검증 지시가 없으면 확신은 높고 취약한 계획을 낼 수 있다. (`inference`)
+- 체크리스트형 가시 추론 출력(가정, 계획, 결과, 검증)으로 개선된다. (`inference`)
 
-## 10) Context handling notes
-- Large advertised context exists in model family documentation, but effective context utilization under local serving/quantization needs empirical validation. (`evidence` + `inference`)
-- For first pass, treat context quality as capacity-constrained and prioritize relevance filtering. (`inference`)
+## 10) 컨텍스트 처리 메모
+- 모델 계열 문서에 큰 컨텍스트가 표기되어 있으나, 로컬 서빙/양자화에서의 실효 활용은 실증 검증이 필요하다. (`evidence` + `inference`)
+- 1차 단계에서는 컨텍스트 품질을 용량 제약으로 간주하고 관련성 필터링을 우선한다. (`inference`)
 
-## 11) Preferred prompt style
-- Concise, rule-based, sectioned prompts are likely to outperform narrative prompts for reliability. (`inference`)
-- TOC/outline scaffolding should help for complex analysis tasks. (`hypothesis`)
+## 11) 선호 프롬프트 스타일
+- 신뢰성 측면에서는 서술형보다 간결한 규칙형/섹션형 프롬프트가 유리할 가능성. (`inference`)
+- 복잡 분석 작업에는 목차/개요 스캐폴딩이 도움이 될 수 있다. (`hypothesis`)
 
-## 12) Recommended use cases
-- **Good fit (first-pass):** code edits, refactors, test drafting, API usage examples, architecture tradeoff memos with bounded scope. (`inference`)
-- **Acceptable with guardrails:** summarization of provided technical docs; structured extraction from user-provided text. (`inference`)
-- **Weak/risky without retrieval:** open-ended factual research, policy/legal/medical advice. (`inference`)
+## 12) 권장 사용 사례
+- **적합(1차):** 코드 수정, 리팩터링, 테스트 초안, API 사용 예시, 범위 제한 아키텍처 트레이드오프 메모. (`inference`)
+- **가드레일 필요:** 제공된 기술 문서 요약, 사용자 제공 텍스트 구조 추출. (`inference`)
+- **검색 없이 위험:** 개방형 사실 조사, 정책/법률/의료 조언. (`inference`)
 
-## 13) Caution points
-- Require explicit uncertainty protocol for factual claims.
-- Reinforce that unsupported claims must be labeled.
-- Keep system prompt compact to preserve task-context budget for local runs.
+## 13) 주의 포인트
+- 사실 주장에는 명시적 불확실성 프로토콜을 요구한다.
+- 근거 없는 주장은 반드시 라벨링하도록 강화한다.
+- 로컬 실행의 작업 컨텍스트 예산을 위해 시스템 프롬프트를 간결하게 유지한다.
 
-## 14) Prompt strategy implications (required)
-- **System prompt implications:** keep compact, rule-forward, define deterministic sectioned output and unknown-handling.
-- **User prompt implications:** repeat format contract and task acceptance criteria at request time.
-- **Context/retrieval implications:** provide curated context snippets with source labels; avoid full dumps.
-- **Output contract implications:** prefer markdown schemas or strict JSON with explicit keys and failure mode.
+## 14) 프롬프트 전략 시사점 (필수)
+- **시스템 프롬프트 시사점:** 간결한 규칙 전개, 결정적 섹션 출력, 미확인 처리 규칙을 포함.
+- **사용자 프롬프트 시사점:** 요청 시점마다 형식 계약과 수용 기준을 반복.
+- **컨텍스트/검색 시사점:** 출처 라벨이 있는 선별 컨텍스트 조각 제공, 전체 덤프 회피.
+- **출력 계약 시사점:** 마크다운 스키마 또는 엄격 JSON(명시 키 + 실패 모드) 선호.
 
-## 15) Confidence and evidence notes
+## 15) 신뢰도 및 근거 메모
 - **Evidence:**
-  - Repository contains no prior Qwen-specific findings (search over repo returned none).
-  - Model card exists for Qwen2.5-Coder-7B-Instruct with broad public availability.
-- **Inference:** model behavior expectations based on coder-model class behavior and prompt-engineering priors.
-- **Hypothesis:** exact adherence/verbosity/context traits until local evaluation runs are completed.
-- **Test references:** none yet; initialize in `output/eval-results/qwen2.5-coder-7b/`.
+  - 저장소에 Qwen 전용 기존 발견사항이 없었다(저장소 검색 결과).
+  - Qwen2.5-Coder-7B-Instruct 모델 카드가 존재하며 공개 배포가 넓다.
+- **Inference:** 코더 모델 계열 동작과 프롬프트 엔지니어링 사전지식 기반 기대치.
+- **Hypothesis:** 로컬 평가가 완료될 때까지 정확한 준수/장문/컨텍스트 특성은 가설.
+- **테스트 참조:** 아직 없음. `output/eval-results/qwen2.5-coder-7b/`에 초기화.

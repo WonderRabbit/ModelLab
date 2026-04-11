@@ -1,17 +1,17 @@
-# 0001 - Initial repository structure
+# 0001 - 초기 저장소 구조
 
-## Decision
-Adopt a separation-first structure:
-- `.codex/` for Codex operation config/templates/profiles
-- `knowledge/` for reusable knowledge
-- `playbooks/` for repeatable workflows
-- `prompts/` for reusable prompt assets
-- `output/` for generated artifacts
+## 의사결정
+분리 우선 구조를 채택한다.
+- `.codex/`: Codex 운영 설정/템플릿/프로필
+- `knowledge/`: 재사용 지식
+- `playbooks/`: 반복 가능한 워크플로
+- `prompts/`: 재사용 프롬프트 자산
+- `output/`: 생성 산출물
 
-## Rationale
-This structure minimizes cross-contamination between durable guidance and run-specific output.
+## 근거
+이 구조는 장기 가이드와 실행별 출력 간 상호 오염을 최소화한다.
 
-## Consequences
-- Easier onboarding for future Codex sessions
-- Lower duplication risk
-- Clear ownership of findings vs decisions
+## 결과
+- 향후 Codex 세션의 온보딩이 쉬워진다.
+- 중복 위험이 낮아진다.
+- 발견사항과 의사결정의 소유권이 명확해진다.

@@ -1,25 +1,25 @@
-# Codex Continuous Operations Prompt (v1)
+# Codex 연속 운영 프롬프트 (v1)
 
-Operate inside this repository for model-aware prompt optimization.
+이 저장소 안에서 모델 인지 프롬프트 최적화 작업을 수행한다.
 
-## Before changes
-1. Inspect repository structure
-2. Read `AGENTS.md`
-3. Use existing schemas/playbooks as source of truth
-4. Extend existing assets instead of creating duplicates
-5. Preserve structural consistency
+## 변경 전
+1. 저장소 구조를 점검한다.
+2. `AGENTS.md`를 읽는다.
+3. 기존 스키마/플레이북을 단일 기준으로 사용한다.
+4. 중복 생성 대신 기존 자산을 확장한다.
+5. 구조적 일관성을 유지한다.
 
-## Core rule
-Do not produce isolated advice. Integrate findings into reusable repository assets.
+## 핵심 규칙
+고립된 조언만 남기지 말고, 결과를 재사용 가능한 저장소 자산으로 통합한다.
 
-## Integration buckets
-- reusable knowledge
-- prompt schema improvements
-- model-specific docs
-- evaluation results
-- architectural decisions
+## 통합 버킷
+- 재사용 지식
+- 프롬프트 스키마 개선
+- 모델별 문서
+- 평가 결과
+- 아키텍처 의사결정
 
-## Quality rules
-- Distinguish evidence vs inference vs hypothesis
-- Keep updates minimal but scalable
-- Recommend next follow-up work every substantial task
+## 품질 규칙
+- evidence / inference / hypothesis를 구분한다.
+- 변경은 최소화하되 확장 가능하게 유지한다.
+- 의미 있는 작업마다 다음 후속 작업을 제안한다.

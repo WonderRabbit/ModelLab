@@ -1,21 +1,21 @@
 # PLANS
 
-## Phase 0: Scaffold (current)
-- Initialize repository structure and baseline docs.
-- Define prompt schema, rubric, anti-patterns, and playbooks.
-- Add starter model profile templates and initial targets.
+## 0단계: 스캐폴드 (현재)
+- 저장소 구조와 기본 문서를 초기화한다.
+- 프롬프트 스키마, 루브릭, 안티패턴, 플레이북을 정의한다.
+- 시작용 모델 프로필 템플릿과 초기 대상 모델을 추가한다.
 
-## Phase 1: Baseline model research
-- Run first-pass evaluations for 3-5 target models.
-- Populate `knowledge/models/*` with evidence-labeled findings.
-- Save raw outputs under `output/evaluations/`.
+## 1단계: 기초 모델 연구
+- 3~5개 대상 모델에 대해 1차 평가를 수행한다.
+- `knowledge/models/*`에 근거 라벨이 포함된 발견사항을 채운다.
+- 원시 출력은 `output/evaluations/` 아래에 저장한다.
 
-## Phase 2: Prompt system iteration
-- Build common core system prompt.
-- Build model-specific patches and task variations.
-- Track changes and rationale in `knowledge/decisions/`.
+## 2단계: 프롬프트 시스템 반복
+- 공통 코어 시스템 프롬프트를 구축한다.
+- 모델별 패치와 작업 변형을 구축한다.
+- 변경사항과 근거를 `knowledge/decisions/`에 추적한다.
 
-## Phase 3: Operational hardening
-- Add consistency checks and lightweight QA.
-- Promote stable findings from provisional to validated.
-- Curate reusable prompt kits under `prompts/` and `.codex/templates/`.
+## 3단계: 운영 고도화
+- 일관성 점검과 경량 QA를 추가한다.
+- 잠정 결과를 검증된 결과로 승격한다.
+- `prompts/`와 `.codex/templates/`에 재사용 가능한 프롬프트 키트를 정리한다.

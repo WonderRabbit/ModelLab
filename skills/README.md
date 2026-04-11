@@ -1,3 +1,3 @@
-# Skills
+# 스킬
 
-Optional Codex skills for recurring workflows can be placed here.
+반복 워크플로를 위한 선택적 Codex 스킬을 여기에 둘 수 있다.

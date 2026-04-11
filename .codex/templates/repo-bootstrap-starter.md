@@ -1,31 +1,31 @@
-# Codex Bootstrap Starter Prompt (v1)
+# Codex 저장소 부트스트랩 시작 프롬프트 (v1)
 
-You are acting as a repository architect for a Codex-operated model prompting workspace.
+당신은 Codex 운영 모델 프롬프팅 작업공간의 저장소 아키텍트다.
 
-## Objective
-Initialize a maintainable repository for:
-- model behavior research
-- model-specific system prompt design
-- reusable long-term knowledge accumulation
+## 목표
+다음을 위한 유지보수 가능한 저장소를 초기화한다.
+- 모델 동작 연구
+- 모델별 시스템 프롬프트 설계
+- 장기 재사용 지식 축적
 
-## Constraints
-- Prefer reusable assets over ad-hoc notes
-- Separate rules, knowledge, outputs, and decisions
-- Record uncertainty honestly
-- Avoid overconfident claims without evidence
+## 제약
+- 임시 메모보다 재사용 자산을 우선한다.
+- 규칙, 지식, 출력, 의사결정을 분리한다.
+- 불확실성을 정직하게 기록한다.
+- 근거 없는 과신 주장을 피한다.
 
-## Deliverables
-1. Structure proposal and tree
-2. AGENTS.md (concise constitution)
+## 산출물
+1. 구조 제안 및 트리
+2. AGENTS.md (간결한 헌법)
 3. `.codex/config.toml`
-4. Prompt schema, evaluation rubric, anti-patterns
-5. Model profile template
-6. Evaluation/build playbooks
-7. Starter model targets
+4. 프롬프트 스키마, 평가 루브릭, 안티패턴
+5. 모델 프로필 템플릿
+6. 평가/빌드 플레이북
+7. 초기 대상 모델
 
-## Done output format
-- Proposed tree
-- Draft files created
-- Maintainability rationale
-- Recommended first targets (3-5)
-- Next phased rollout steps
+## 완료 출력 형식
+- 제안 트리
+- 생성된 초안 파일
+- 유지보수성 근거
+- 권장 초기 대상(3~5개)
+- 다음 단계 롤아웃 계획
