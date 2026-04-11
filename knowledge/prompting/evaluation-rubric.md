@@ -1,62 +1,62 @@
-# Prompt Optimization Evaluation Rubric
+# 프롬프트 최적화 평가 루브릭
 
-Use this rubric to evaluate model+prompt combinations consistently.
+이 루브릭으로 모델+프롬프트 조합을 일관되게 평가한다.
 
-## Scoring scale
-- 1 = poor / frequently fails
-- 2 = weak / unstable
-- 3 = acceptable baseline
-- 4 = strong
-- 5 = excellent / reliable
+## 점수 척도
+- 1 = 낮음 / 자주 실패
+- 2 = 약함 / 불안정
+- 3 = 수용 가능한 기준선
+- 4 = 강함
+- 5 = 우수 / 신뢰 가능
 
-## Criteria
+## 기준
 
-| Criterion | What to check | Score (1-5) | Notes |
+| 기준 | 확인 사항 | 점수 (1-5) | 메모 |
 |---|---|---:|---|
-| Instruction following | Follows explicit directives and constraints |  |  |
-| Format adherence | Meets required schema/headers/JSON validity |  |  |
-| Reasoning quality | Produces sound decomposition and justified conclusions |  |  |
-| Verbosity control | Matches requested length/detail level |  |  |
-| Task fitness | Output usefulness for target task/domain |  |  |
-| Cross-run consistency | Similar quality across repeated runs |  |  |
-| Hallucination risk | Unsupported claims, fabricated details, overconfidence |  |  |
-| Context handling quality | Correctly uses relevant context, ignores distractors |  |  |
+| 지시 준수 | 명시 지시와 제약을 따르는가 |  |  |
+| 형식 준수 | 요구 스키마/헤더/JSON 유효성을 만족하는가 |  |  |
+| 추론 품질 | 타당한 분해와 근거 있는 결론을 내는가 |  |  |
+| 장문 제어 | 요청한 길이/상세 수준과 일치하는가 |  |  |
+| 작업 적합성 | 대상 작업/도메인에 유용한 출력인가 |  |  |
+| 실행 간 일관성 | 반복 실행에서도 유사한 품질인가 |  |  |
+| 환각 위험 | 근거 없는 주장, 조작 세부, 과신이 있는가 |  |  |
+| 컨텍스트 처리 품질 | 관련 컨텍스트를 정확히 사용하고 잡음을 배제하는가 |  |  |
 
-## Run record template
+## 실행 기록 템플릿
 
 ```md
-# Evaluation Run
-- Date:
-- Evaluator:
-- Model:
-- Prompt version:
-- Task set:
-- Context size/type:
+# 평가 실행
+- 날짜:
+- 평가자:
+- 모델:
+- 프롬프트 버전:
+- 작업 세트:
+- 컨텍스트 크기/유형:
 
-## Scores
-| Criterion | Score | Evidence |
+## 점수
+| 기준 | 점수 | 근거 |
 |---|---:|---|
-| Instruction following |  |  |
-| Format adherence |  |  |
-| Reasoning quality |  |  |
-| Verbosity control |  |  |
-| Task fitness |  |  |
-| Cross-run consistency |  |  |
-| Hallucination risk |  |  |
-| Context handling quality |  |  |
+| 지시 준수 |  |  |
+| 형식 준수 |  |  |
+| 추론 품질 |  |  |
+| 장문 제어 |  |  |
+| 작업 적합성 |  |  |
+| 실행 간 일관성 |  |  |
+| 환각 위험 |  |  |
+| 컨텍스트 처리 품질 |  |  |
 
-## Stability assessment
-- Stable / provisional / inconclusive:
-- Why:
+## 안정성 평가
+- 안정 / 잠정 / 결론 불가:
+- 이유:
 
-## Implications for prompt strategy
-- Keep:
-- Change:
-- Test next:
+## 프롬프트 전략 시사점
+- 유지:
+- 변경:
+- 다음 테스트:
 ```
 
-## Interpretation bands
-- **4.3+**: production candidate with minor hardening.
-- **3.5-4.2**: workable with targeted patching.
-- **2.5-3.4**: needs prompt redesign and tighter constraints.
-- **<2.5**: poor fit for this task setup; reconsider model or approach.
+## 해석 구간
+- **4.3+**: 소규모 고도화 후 운영 후보.
+- **3.5-4.2**: 타깃 패치로 실무 가능.
+- **2.5-3.4**: 프롬프트 재설계와 더 엄격한 제약 필요.
+- **<2.5**: 이 작업 설정과 부적합, 모델/접근 재검토.

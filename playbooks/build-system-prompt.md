@@ -1,27 +1,27 @@
-# Playbook: Build System Prompt
+# 플레이북: 시스템 프롬프트 구축
 
-## Goal
-Transform model research into reusable, model-aware system prompts.
+## 목표
+모델 연구 결과를 재사용 가능한 모델 인지 시스템 프롬프트로 전환한다.
 
-## Inputs
-- Common schema (`knowledge/prompting/schema.md`)
-- Model profile
-- Target task type/domain
+## 입력
+- 공통 스키마 (`knowledge/prompting/schema.md`)
+- 모델 프로필
+- 대상 작업 유형/도메인
 
-## Procedure
-1. Draft common core prompt (model-agnostic baseline).
-2. Add model-specific patch from profile implications.
-3. Add task-specific variation (if needed).
-4. Define output contract and failure behavior.
-5. Run quick sanity evaluation (format + instruction adherence).
-6. Store prompt asset under `prompts/` and, if reusable, template under `.codex/templates/`.
+## 절차
+1. 공통 코어 프롬프트(모델 불가지론 기준선)를 초안 작성한다.
+2. 프로필 시사점에서 모델별 패치를 추가한다.
+3. 필요 시 작업별 변형을 추가한다.
+4. 출력 계약과 실패 동작을 정의한다.
+5. 빠른 건전성 평가(형식 + 지시 준수)를 수행한다.
+6. 프롬프트 자산을 `prompts/`에 저장하고, 재사용 가능하면 `.codex/templates/`에도 템플릿화한다.
 
-## Design rules
-- Keep common core stable; isolate volatility in model patch.
-- Use explicit constraints and measurable output format.
-- Keep patches minimal and evidence-backed.
+## 설계 규칙
+- 공통 코어는 안정적으로 유지하고 변동성은 모델 패치로 격리한다.
+- 명시적 제약과 측정 가능한 출력 형식을 사용한다.
+- 패치는 최소화하고 근거 기반으로 유지한다.
 
-## Required outputs
-- Prompt file with version tag
-- Change rationale
-- Known risks and TODO tests
+## 필수 산출물
+- 버전 태그가 포함된 프롬프트 파일
+- 변경 근거
+- 알려진 위험과 TODO 테스트

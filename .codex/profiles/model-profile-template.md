@@ -1,54 +1,54 @@
-# Model Profile Template
+# 모델 프로필 템플릿
 
-## 1) Metadata
-- Model name:
-- Provider:
-- Version/date:
-- Parameter/class (if known):
-- Last updated:
-- Owner:
+## 1) 메타데이터
+- 모델 이름:
+- 제공자:
+- 버전/날짜:
+- 파라미터/클래스(알려진 경우):
+- 마지막 업데이트:
+- 담당자:
 
-## 2) Summary
-- One-paragraph operational summary.
+## 2) 요약
+- 운영 관점 한 단락 요약.
 
-## 3) Strengths
-- What tasks this model reliably does well.
+## 3) 강점
+- 이 모델이 안정적으로 잘 수행하는 작업.
 
-## 4) Weaknesses
-- Failure modes and degraded output conditions.
+## 4) 약점
+- 실패 양상과 성능 저하 조건.
 
-## 5) Instruction-following tendency
-- Strict / moderate / loose.
-- What instruction patterns improve adherence.
+## 5) 지시 준수 성향
+- 엄격 / 보통 / 느슨함.
+- 준수율을 높이는 지시 패턴.
 
-## 6) Format adherence
-- Reliability for JSON/table/schema outputs.
-- Common break patterns.
+## 6) 형식 준수
+- JSON/표/스키마 출력 신뢰도.
+- 자주 깨지는 패턴.
 
-## 7) Verbosity tendency
-- Default verbosity and controllability.
+## 7) 장문 성향
+- 기본 장문 정도와 제어 가능성.
 
-## 8) Reasoning characteristics
-- Decomposition quality, error types, consistency.
+## 8) 추론 특성
+- 분해 품질, 오류 유형, 일관성.
 
-## 9) Context handling notes
-- Long-context behavior, salience issues, truncation risks.
+## 9) 컨텍스트 처리 메모
+- 장문 컨텍스트 동작, 중요도 누락, 잘림 위험.
 
-## 10) Preferred prompt style
-- Concise constraint-driven / structured scaffolding / few-shot heavy / etc.
+## 10) 선호 프롬프트 스타일
+- 간결한 제약 중심 / 구조적 스캐폴딩 / 퓨샷 중심 / 기타.
 
-## 11) Recommended use cases
-- High-fit tasks and boundaries.
+## 11) 권장 사용 사례
+- 적합한 작업과 경계.
 
-## 12) Caution points
-- Hallucination risk patterns, safety/scope caveats.
+## 12) 주의 포인트
+- 환각 위험 패턴, 안전/범위 주의사항.
 
-## 13) Prompt strategy implications (required)
-- **System prompt implications:**
-- **User prompt implications:**
-- **Context/retrieval implications:**
-- **Output contract implications:**
+## 13) 프롬프트 전략 시사점 (필수)
+- **시스템 프롬프트 시사점:**
+- **사용자 프롬프트 시사점:**
+- **컨텍스트/검색 시사점:**
+- **출력 계약 시사점:**
 
-## 14) Confidence and evidence notes
-- Evidence level per claim: `evidence`, `inference`, `hypothesis`.
-- Test references: output paths, run IDs, date range.
+## 14) 신뢰도 및 근거 메모
+- 주장별 근거 수준: `evidence`, `inference`, `hypothesis`.
+- 테스트 참조: 출력 경로, 실행 ID, 날짜 범위.

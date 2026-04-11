@@ -1,41 +1,41 @@
-# Prompting Anti-Patterns
+# 프롬프팅 안티패턴
 
-## 1) Goal ambiguity
-- Symptom: broad answers, missed intent.
-- Fix: define explicit success criteria and boundaries.
+## 1) 목표 모호성
+- 증상: 답변이 넓게 퍼지고 의도를 놓침.
+- 해결: 명시적 성공 기준과 경계를 정의.
 
-## 2) Constraint burial
-- Symptom: important rules ignored.
-- Fix: place non-negotiables near top in bullet form.
+## 2) 제약 매몰
+- 증상: 중요한 규칙이 무시됨.
+- 해결: 비타협 제약을 상단 글머리표로 배치.
 
-## 3) Overloaded context dump
-- Symptom: model latches onto irrelevant details.
-- Fix: curate context and annotate relevance.
+## 3) 과적재 컨텍스트 덤프
+- 증상: 모델이 무관한 세부에 집착.
+- 해결: 컨텍스트를 선별하고 관련성을 주석 처리.
 
-## 4) Output contract vagueness
-- Symptom: formatting drift, inconsistent structure.
-- Fix: provide schema/header contract and examples.
+## 4) 출력 계약 모호성
+- 증상: 포맷 드리프트, 구조 불일치.
+- 해결: 스키마/헤더 계약과 예시 제공.
 
-## 5) Mixing policy and preference
-- Symptom: hard rules treated as optional style.
-- Fix: separate mandatory constraints from style guidance.
+## 5) 정책과 선호 혼합
+- 증상: 하드 규칙이 선택 문체처럼 처리됨.
+- 해결: 필수 제약과 문체 가이드를 분리.
 
-## 6) No uncertainty protocol
-- Symptom: confident hallucinations.
-- Fix: require assumption labeling and evidence grading.
+## 6) 불확실성 프로토콜 부재
+- 증상: 확신에 찬 환각.
+- 해결: 가정 라벨링과 근거 등급화를 요구.
 
-## 7) One-shot overfitting
-- Symptom: prompt works once but not across tasks.
-- Fix: evaluate across varied tasks and repeated runs.
+## 7) 원샷 과적합
+- 증상: 한 번은 맞지만 작업 전반에 불안정.
+- 해결: 다양한 작업과 반복 실행으로 평가.
 
-## 8) Model-agnostic stubbornness
-- Symptom: same prompt underperforms on specific models.
-- Fix: keep common core + model patch strategy.
+## 8) 모델 불가지론 고집
+- 증상: 동일 프롬프트가 특정 모델에서 저성능.
+- 해결: 공통 코어 + 모델 패치 전략 유지.
 
-## 9) Excessive verbosity instructions
-- Symptom: bloated responses, hidden errors.
-- Fix: set tight length budget and structure.
+## 9) 과도한 장문 지시
+- 증상: 비대한 응답, 오류 은닉.
+- 해결: 엄격한 길이 예산과 구조 지정.
 
-## 10) Missing handoff artifacts
-- Symptom: future sessions cannot continue work.
-- Fix: store results in `knowledge/`, `output/`, and `decisions/` systematically.
+## 10) 인수인계 산출물 누락
+- 증상: 후속 세션이 작업을 이어가기 어려움.
+- 해결: `knowledge/`, `output/`, `decisions/`에 체계적으로 저장.

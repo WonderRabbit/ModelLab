@@ -1,7 +1,7 @@
-# Output Artifacts
+# 출력 산출물
 
-Store generated experimental artifacts only.
+생성된 실험 산출물만 저장한다.
 
-- `evaluations/`: rubric-scored runs
-- `experiments/`: ad-hoc test outputs
-- `reports/`: synthesized summaries
+- `evaluations/`: 루브릭 점수 기반 실행 결과
+- `experiments/`: 임시 테스트 출력
+- `reports/`: 종합 요약 보고서

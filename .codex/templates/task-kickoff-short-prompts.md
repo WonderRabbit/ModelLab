@@ -1,14 +1,14 @@
-# Short kickoff prompts
+# 짧은 킥오프 프롬프트
 
-## For initial scaffold creation
-Start with the minimum viable scaffold.
-Prefer draft-quality but well-structured documents over polished but rigid ones.
-Do not over-expand the repository in one pass.
+## 초기 스캐폴드 생성용
+최소 기능 스캐폴드부터 시작한다.
+과도하게 다듬은 경직 문서보다, 구조가 좋은 초안 문서를 우선한다.
+한 번에 저장소를 과도하게 확장하지 않는다.
 
-## For starting research
-Use the current repository structure as the source of truth.
-Add findings conservatively.
-Clearly separate evidence, inference, and hypothesis.
+## 연구 시작용
+현재 저장소 구조를 기준으로 사용한다.
+발견사항은 보수적으로 추가한다.
+근거, 추론, 가설을 명확히 분리한다.
 
-## For structure refactoring
-Prefer extending existing documents over creating new files unless separation clearly improves maintainability.
+## 구조 리팩터링용
+유지보수성이 명확히 개선되지 않는 한 새 파일 생성보다 기존 문서 확장을 우선한다.

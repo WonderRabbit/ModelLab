@@ -1,30 +1,30 @@
-# Playbook: Evaluate Model
+# 플레이북: 모델 평가
 
-## Goal
-Run repeatable evaluations for a target model and update reusable guidance.
+## 목표
+대상 모델에 대해 반복 가능한 평가를 수행하고 재사용 가이드를 갱신한다.
 
-## Inputs
-- Target model
-- Prompt version(s)
-- Task set (at least 3 tasks)
-- Evaluation rubric (`knowledge/prompting/evaluation-rubric.md`)
+## 입력
+- 대상 모델
+- 프롬프트 버전(들)
+- 작업 세트(최소 3개)
+- 평가 루브릭 (`knowledge/prompting/evaluation-rubric.md`)
 
-## Procedure
-1. Define scope and hypotheses.
-2. Execute tasks with controlled variations (same tasks, same format contract).
-3. Run at least 3 repeated runs for consistency checks.
-4. Score using rubric.
-5. Save raw outputs in `output/evaluations/<model>/<date>/`.
-6. Update model profile with evidence/inference/hypothesis labels.
-7. Record major decisions in `knowledge/decisions/` if strategy changes.
+## 절차
+1. 범위와 가설을 정의한다.
+2. 통제된 변형으로 작업을 실행한다(동일 작업, 동일 형식 계약).
+3. 일관성 점검을 위해 최소 3회 반복 실행한다.
+4. 루브릭으로 채점한다.
+5. 원시 출력을 `output/evaluations/<model>/<date>/`에 저장한다.
+6. 모델 프로필을 evidence/inference/hypothesis 라벨로 갱신한다.
+7. 전략이 바뀌면 `knowledge/decisions/`에 주요 의사결정을 기록한다.
 
-## Required artifacts
-- Evaluation run report (markdown)
-- Score table
-- Stability assessment
-- Prompt strategy implications
+## 필수 산출물
+- 평가 실행 보고서(마크다운)
+- 점수표
+- 안정성 평가
+- 프롬프트 전략 시사점
 
-## Exit criteria
-- Rubric completed for all criteria
-- Evidence paths linked
-- Next experiment clearly defined
+## 종료 기준
+- 모든 기준에 대해 루브릭 작성 완료
+- 근거 경로가 연결됨
+- 다음 실험이 명확히 정의됨

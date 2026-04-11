@@ -1,7 +1,7 @@
-# Claude 3.7 Sonnet (starter)
+# Claude 3.7 Sonnet (시작 문서)
 
-Status: scaffold created. Populate using model profile template after evaluation runs.
+상태: 스캐폴드 생성 완료. 평가 실행 후 모델 프로필 템플릿으로 채운다.
 
-- Evidence: pending
-- Inference: pending
-- Hypothesis: pending
+- Evidence: 대기
+- Inference: 대기
+- Hypothesis: 대기

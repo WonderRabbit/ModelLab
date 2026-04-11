@@ -1,21 +1,21 @@
-# Reusable Prompt Schema
+# 재사용 프롬프트 스키마
 
-Purpose: define a shared prompt contract that can be reused across models while allowing model-specific patches.
+목적: 모델 간 재사용 가능한 공통 프롬프트 계약을 정의하되, 모델별 패치를 허용한다.
 
-## Schema sections
+## 스키마 섹션
 
-| Section | Description | Status | Model-sensitive |
+| 섹션 | 설명 | 상태 | 모델 민감도 |
 |---|---|---|---|
-| Role | Who the model is acting as | Mandatory | Low |
-| Goal | Task objective and success criteria | Mandatory | Medium |
-| Context | Domain info, input docs, constraints from environment | Optional (required when non-trivial) | High |
-| Constraints | Hard rules, do/don't rules, safety, scope limits | Mandatory | High |
-| Output format | Required structure/schema/examples | Mandatory | High |
-| Reasoning strategy | How to approach problem decomposition and checking | Optional | High |
-| Style | Tone, verbosity, language, audience | Optional | Medium |
-| Model-specific patch | Provider/model tweaks overriding defaults | Optional (mandatory for production model-targeted prompts) | Very high |
+| Role | 모델이 수행할 역할 | 필수 | 낮음 |
+| Goal | 작업 목표와 성공 기준 | 필수 | 중간 |
+| Context | 도메인 정보, 입력 문서, 환경 제약 | 선택(복잡 작업은 필수) | 높음 |
+| Constraints | 하드 규칙, 금지/권장, 안전, 범위 제한 | 필수 | 높음 |
+| Output format | 요구 구조/스키마/예시 | 필수 | 높음 |
+| Reasoning strategy | 문제 분해와 점검 접근 | 선택 | 높음 |
+| Style | 톤, 장문 정도, 언어, 독자 | 선택 | 중간 |
+| Model-specific patch | 기본값을 덮는 제공자/모델 조정 | 선택(운영용 모델 타깃은 사실상 필수) | 매우 높음 |
 
-## Canonical layout
+## 표준 레이아웃
 
 ```md
 [ROLE]
@@ -43,57 +43,57 @@ Purpose: define a shared prompt contract that can be reused across models while 
 ...
 ```
 
-## Guidance by section
+## 섹션별 가이드
 
-### 1) Role (mandatory)
-- Keep short and operational (1-3 lines).
-- Avoid personality-heavy instructions.
+### 1) Role (필수)
+- 짧고 운영적으로 유지(1~3줄).
+- 과도한 성격 지시를 피한다.
 
-### 2) Goal (mandatory)
-- Define exact completion target and acceptance conditions.
-- Include what *not* to optimize for.
+### 2) Goal (필수)
+- 정확한 완료 목표와 수용 조건을 정의한다.
+- 무엇을 *최적화하지 않을지*도 포함한다.
 
-### 3) Context (optional/model-sensitive)
-- Include only relevant context; avoid dumping full history.
-- Prefer structured context blocks with source labels.
+### 3) Context (선택/모델 민감)
+- 관련 컨텍스트만 포함하고 전체 이력 덤프를 피한다.
+- 출처 라벨이 있는 구조 블록을 선호한다.
 
-### 4) Constraints (mandatory/model-sensitive)
-- Put non-negotiables first.
-- Use measurable constraints (length, schema keys, prohibited actions).
+### 4) Constraints (필수/모델 민감)
+- 비타협 제약을 먼저 둔다.
+- 측정 가능한 제약(길이, 스키마 키, 금지 동작)을 사용한다.
 
-### 5) Output format (mandatory/model-sensitive)
-- Use explicit contract (fields/order/types).
-- Add fallback behavior when uncertain.
+### 5) Output format (필수/모델 민감)
+- 명시적 계약(필드/순서/타입)을 사용한다.
+- 불확실 시 폴백 동작을 추가한다.
 
-### 6) Reasoning strategy (optional/model-sensitive)
-- Specify decomposition/checklist style without requiring hidden chain-of-thought exposure.
-- Encourage verification steps and assumption listing.
+### 6) Reasoning strategy (선택/모델 민감)
+- 숨은 CoT 노출 강제가 아닌 분해/체크리스트 방식을 지정한다.
+- 검증 단계와 가정 목록 작성을 유도한다.
 
-### 7) Style (optional)
-- Control verbosity and tone explicitly.
-- For operational tasks, default to concise + structured bullets.
+### 7) Style (선택)
+- 장문 정도와 톤을 명시 제어한다.
+- 운영 작업은 간결 + 구조화 글머리표를 기본으로 한다.
 
-### 8) Model-specific patch (optional/model-sensitive)
-- Use for observed model behaviors (e.g., format drift, verbosity drift).
-- Keep patch small and test-backed.
+### 8) Model-specific patch (선택/모델 민감)
+- 관찰된 모델 동작(형식 드리프트, 장문 드리프트 등)에 사용한다.
+- 패치는 작고 테스트 근거 기반으로 유지한다.
 
-## Minimal production skeleton
+## 최소 운영 스켈레톤
 
 ```md
 [ROLE]
-You are ...
+당신은 ...
 
 [GOAL]
-Deliver X with success criteria A/B/C.
+성공 기준 A/B/C로 X를 제공한다.
 
 [CONSTRAINTS]
-- Must ...
-- Must not ...
+- 반드시 ...
+- 금지 ...
 
 [OUTPUT_FORMAT]
-Return markdown with sections: Summary, Evidence, Next Step.
+Summary, Evidence, Next Step 섹션의 마크다운을 반환한다.
 
 [MODEL_PATCH]
-- Reinforce strict format with exact section headers.
-- Keep response under N bullets.
+- 정확한 섹션 헤더로 엄격 형식을 재강조한다.
+- 응답을 N개 글머리표 이하로 유지한다.
 ```

@@ -1,75 +1,75 @@
-# Prompting Guidance: Qwen2.5-Coder-7B (First Pass)
+# 프롬프팅 가이드: Qwen2.5-Coder-7B (1차)
 
-Status: provisional until local eval data is collected.
+상태: 로컬 평가 데이터 수집 전까지 잠정.
 
-## A) System prompt design for this model
+## A) 이 모델용 시스템 프롬프트 설계
 
-### Recommended pattern
-1. Keep system prompt compact and operational.
-2. Put hard constraints in short bullet rules.
-3. Define output contract with exact section headers.
-4. Add explicit uncertainty protocol.
-5. Add minimal model patch for known/expected drift.
+### 권장 패턴
+1. 시스템 프롬프트를 간결하고 운영 지향으로 유지한다.
+2. 하드 제약은 짧은 글머리표 규칙으로 둔다.
+3. 정확한 섹션 헤더로 출력 계약을 정의한다.
+4. 명시적 불확실성 프로토콜을 추가한다.
+5. 알려진/예상 드리프트용 최소 모델 패치를 넣는다.
 
-### Why
-- Concise rule-first prompts are expected to improve instruction retention in 7B local deployments. (`inference`)
-- Format drift is common when output contracts are vague. (`inference`)
+### 이유
+- 간결한 규칙 우선 프롬프트가 7B 로컬 배포에서 지시 유지에 유리할 가능성. (`inference`)
+- 출력 계약이 모호하면 형식 드리프트가 자주 발생. (`inference`)
 
-### System prompt essentials
-- Role and scope.
-- Non-negotiable constraints.
-- Output structure.
-- “If missing info” behavior.
-- Length/verbosity controls.
+### 시스템 프롬프트 필수
+- 역할과 범위
+- 비타협 제약
+- 출력 구조
+- 정보 누락 시 동작
+- 길이/장문 제어
 
-### System prompt optional elements
-- Persona/tone details beyond concise professionalism.
-- Few-shot demonstrations (prefer user-level insertion for specific tasks first).
+### 시스템 프롬프트 선택 요소
+- 간결한 전문 톤을 넘는 페르소나/문체 상세
+- 퓨샷 시연(반복 실패 시 사용자 프롬프트 측 우선 삽입)
 
-## B) User prompt design for this model
+## B) 이 모델용 사용자 프롬프트 설계
 
-### Recommended pattern
-- Repeat the required output format in each request for critical tasks.
-- Provide concrete acceptance criteria (tests, constraints, done definition).
-- Provide context as labeled blocks: `Context A`, `Context B`.
-- Ask for assumptions + unknowns when context is incomplete.
+### 권장 패턴
+- 중요한 작업은 매 요청마다 요구 출력 형식을 반복한다.
+- 구체적 수용 기준(테스트, 제약, 완료 정의)을 제공한다.
+- 컨텍스트를 `Context A`, `Context B`처럼 라벨 블록으로 제공한다.
+- 컨텍스트가 불완전하면 가정 + 미확인 항목을 요청한다.
 
-### Responsibility split
-- **System prompt** should hold stable behavior defaults.
-- **User prompt** should hold task specifics, format reinforcement, and domain constraints.
+### 책임 분리
+- **시스템 프롬프트**: 안정적 기본 동작.
+- **사용자 프롬프트**: 작업 상세, 형식 재강조, 도메인 제약.
 
-## C) Output-format reinforcement guidance
-- Reinforce format in user prompt when:
-  1. output must be machine-consumable,
-  2. answer length must be bounded,
-  3. repeated production consistency matters.
-- For strict outputs, require either:
-  - exact markdown headers in fixed order, or
-  - JSON with exact key list and “no additional keys”.
+## C) 출력 형식 강화 가이드
+- 다음 경우 사용자 프롬프트에서 형식을 재강화한다.
+  1. 출력이 기계 소비 가능해야 할 때
+  2. 답변 길이를 제한해야 할 때
+  3. 반복 생산 일관성이 중요할 때
+- 엄격 출력의 경우 다음 중 하나를 요구한다.
+  - 고정 순서의 정확한 마크다운 헤더
+  - 정확한 키 목록 + “추가 키 금지” JSON
 
-## D) Scaffolding and structure choices
-- **Step-by-step scaffolding:** useful for architecture/design or debugging plans. (`inference`)
-- **TOC-style outline prompts:** likely useful for long analyses to reduce omission risk. (`hypothesis`)
-- **Concise rule-based vs natural style:** prefer concise rule-based for reliability; natural style can be layered for user-facing polish after correctness is achieved. (`inference`)
+## D) 스캐폴딩/구조 선택
+- **단계별 스캐폴딩:** 아키텍처/설계 또는 디버깅 계획에 유용. (`inference`)
+- **목차형 개요 프롬프트:** 긴 분석에서 누락 위험 감소에 도움 가능. (`hypothesis`)
+- **간결 규칙형 vs 자연 문체:** 신뢰성은 간결 규칙형 우선, 정확도 확보 후 사용자 노출용 문체를 덧입힌다. (`inference`)
 
-## E) Anti-patterns to avoid (model-focused)
-1. Mixed hard rules + preferences in one paragraph.
-2. Buried constraints after long context dumps.
-3. Asking for “best” answer without decision criteria.
-4. Requiring strict format without re-stating schema in the user turn.
-5. Overly long system prompts that consume local context budget.
+## E) 피해야 할 안티패턴 (모델 초점)
+1. 한 문단에 하드 규칙과 선호를 혼합.
+2. 긴 컨텍스트 덤프 뒤에 제약을 숨김.
+3. 판단 기준 없이 “최선의 답” 요구.
+4. 사용자 턴에서 스키마 재명시 없이 엄격 형식 강제.
+5. 로컬 컨텍스트 예산을 잠식하는 과도한 시스템 프롬프트.
 
-## F) First-pass prompt ingredient matrix
-| Ingredient | Priority | Notes |
+## F) 1차 프롬프트 재료 매트릭스
+| 재료 | 우선순위 | 메모 |
 |---|---|---|
-| Explicit task goal + success criteria | Essential | Prevents broad/off-target outputs |
-| Hard constraints at top | Essential | Improves adherence |
-| Output schema (exact headers/keys) | Essential | Reduces format drift |
-| Uncertainty protocol | Essential | Reduces overconfident fabrication |
-| Verbosity budget | Essential | Controls local token cost |
-| Few-shot examples | Optional | Add only for repeated failure modes |
-| Rich persona instructions | Optional | Low ROI for coding tasks |
+| 명시적 작업 목표 + 성공 기준 | 필수 | 넓고 빗나간 출력을 방지 |
+| 상단 하드 제약 | 필수 | 준수율 향상 |
+| 출력 스키마(정확 헤더/키) | 필수 | 형식 드리프트 감소 |
+| 불확실성 프로토콜 | 필수 | 과신 기반 생성 오류 감소 |
+| 장문 예산 | 필수 | 로컬 토큰 비용 제어 |
+| 퓨샷 예시 | 선택 | 반복 실패 모드에서만 추가 |
+| 풍부한 페르소나 지시 | 선택 | 코딩 작업 ROI 낮음 |
 
-## G) Confidence notes
-- Evidence in repo for Qwen-specific behavior: none yet.
-- Current guidance is inference/hypothesis and must be validated via `playbooks/evaluate-qwen2.5-coder-7b.md`.
+## G) 신뢰도 메모
+- 저장소 내 Qwen 전용 동작 근거: 아직 없음.
+- 현재 가이드는 `playbooks/evaluate-qwen2.5-coder-7b.md`로 검증해야 하는 추론/가설이다.

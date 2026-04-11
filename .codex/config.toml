@@ -1,4 +1,4 @@
-# Codex workspace config for model-aware prompt optimization
+# 모델 인지 프롬프트 최적화를 위한 Codex 작업공간 설정
 workspace_name = "ModelLab"
 default_profile = "researcher"
 
@@ -20,14 +20,14 @@ must_record_uncertainty = true
 must_recommend_next_step = true
 
 [roles.researcher]
-description = "Analyze model behavior and capture evidence-backed prompting implications."
+description = "모델 동작을 분석하고 근거 기반 프롬프트 시사점을 기록한다."
 primary_docs = [
   "knowledge/prompting/evaluation-rubric.md",
   "playbooks/evaluate-model.md"
 ]
 
 [roles.builder]
-description = "Design prompt schema, reusable components, and model-specific patches."
+description = "프롬프트 스키마, 재사용 가능한 구성요소, 모델별 패치를 설계한다."
 primary_docs = [
   "knowledge/prompting/schema.md",
   "playbooks/build-system-prompt.md"
